@@ -1,5 +1,10 @@
 pipeline {
-  agent none
+  agent {
+    node {
+      label 'nodejs-centos7'
+    }
+
+  }
   stages {
     stage('Checkout Code') {
       steps {
