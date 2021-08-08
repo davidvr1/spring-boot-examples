@@ -23,7 +23,8 @@ mvn compile'''
 
     stage('test the app') {
       steps {
-        sh 'mvn test'
+        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_master/spring-boot-package-war
+mvn test'''
         slackSend(channel: 'david-varshoer', message: 'test succedded')
       }
     }
