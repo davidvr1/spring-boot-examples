@@ -31,7 +31,7 @@ mvn test'''
 
     stage('packging') {
       steps {
-        zip(zipFile: 'pacage.zip', archive: true, overwrite: true)
+        zip(zipFile: 'package.zip', archive: true, overwrite: true)
         archiveArtifacts(artifacts: 'package.zip', onlyIfSuccessful: true)
         cleanWs(cleanWhenSuccess: true)
         slackSend(channel: 'david-varshoer', message: 'artifact is ready!')
