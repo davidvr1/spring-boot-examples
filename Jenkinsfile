@@ -1,7 +1,7 @@
 pipeline {
   agent {
     node {
-      label 'nodejs-centos7'
+      label 'centos7'
     }
 
   }
