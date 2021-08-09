@@ -8,8 +8,8 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        slackSend(channel: 'david-varshoer', message: 'checkout success')
         git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
+        slackSend(channel: 'david-varshoer', message: 'checkout success')
       }
     }
 
