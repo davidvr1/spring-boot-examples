@@ -8,24 +8,26 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
         slackSend(channel: 'david-varshoer', message: 'checkout success')
+        git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
 
     stage('mvn build') {
       steps {
+        slackSend(channel: 'david-varshoer', message: 'mvn buil success')
         sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war
 mvn compile'''
-        slackSend(channel: 'david-varshoer', message: 'mvn buil success')
       }
     }
 
     stage('test the app') {
       steps {
-        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war
-mvn test'''
         slackSend(channel: 'david-varshoer', message: 'test succedded')
+        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war
+mvn test
+
+'''
       }
     }
 
