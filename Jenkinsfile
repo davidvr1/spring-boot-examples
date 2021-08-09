@@ -15,20 +15,16 @@ pipeline {
 
     stage('mvn build') {
       steps {
-        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war
-
- mvn compile'''
+        sh 'cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war'
+        sh 'mvn compile'
         slackSend(channel: 'david-varshoer', message: 'mvn buil success')
       }
     }
 
     stage('test the app') {
       steps {
-        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war
-
-mvn test
-
-'''
+        sh 'cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war'
+        sh 'mvn test'
         slackSend(channel: 'david-varshoer', message: 'test succedded')
       }
     }
