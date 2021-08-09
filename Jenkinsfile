@@ -15,7 +15,8 @@ pipeline {
 
     stage('mvn build') {
       steps {
-        sh 'cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war'
+        sh '''cd /home/vagrant/jenkins/workspace/spring-boot-examples_davidvr1_sol/spring-boot-package-war 
+mvn compile'''
         slackSend(channel: 'david-varshoer', message: 'mvn buil success')
       }
     }
