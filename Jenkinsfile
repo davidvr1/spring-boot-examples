@@ -12,7 +12,7 @@ pipeline {
           env.stepLevel = 'Checkout Code'
         }
 
-        git(url: 'https://github.com/davidvr1/spring-boot-examples.git1', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
+        git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
 
@@ -22,7 +22,7 @@ pipeline {
           env.stepLevel = 'mvn build'
         }
 
-        sh '''cd spring-boot-package-war 
+        sh '''cd spring-boot-package-war1 
 			echo $BUILD_ID
 			mvn compile'''
       }
