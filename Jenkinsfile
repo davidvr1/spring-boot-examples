@@ -55,7 +55,7 @@ pipeline {
 
   }
   environment {
-    stepLevel = 'start'
+    
   }
   post {
     success {
