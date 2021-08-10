@@ -5,7 +5,6 @@ pipeline {
     }
 
   }
-  stepLevel = 'start';
   stages {
     stage('Checkout Code') {
       steps {
