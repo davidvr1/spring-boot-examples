@@ -8,18 +8,20 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        script{
-        	env.stepLevel = 'Checkout Code'
-	}
+        script {
+          env.stepLevel = 'Checkout Code'
+        }
+
         git(url: 'https://github.com/davidvr1/spring-boot-examples.git1', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
 
     stage('mvn build') {
       steps {
-        script{
-        	env.stepLevel = 'mvn build'
-	}
+        script {
+          env.stepLevel = 'mvn build'
+        }
+
         sh '''cd spring-boot-package-war 
 			echo $BUILD_ID
 			mvn compile'''
@@ -28,9 +30,10 @@ pipeline {
 
     stage('test the app') {
       steps {
-       script{
-        	env.stepLevel = 'test the app'
-	}	      
+        script {
+          env.stepLevel = 'test the app'
+        }
+
         sh '''cd spring-boot-package-war 
 			mvn test'''
       }
@@ -38,9 +41,10 @@ pipeline {
 
     stage('packging') {
       steps {
-        script{
-		env.stepLevel = 'packging'
-	}
+        script {
+          env.stepLevel = 'packging'
+        }
+
         sh '''cd spring-boot-package-war 
 			mvn clean package & '''
         zip(zipFile: 'package.zip', archive: true, overwrite: true)
