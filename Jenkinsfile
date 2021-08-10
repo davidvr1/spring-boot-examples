@@ -8,7 +8,9 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        env.stepLevel = 'Checkout Code'
+        script{
+        	env.stepLevel = 'Checkout Code'
+	}
         git(url: 'https://github.com/davidvr1/spring-boot-examples.git1', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
