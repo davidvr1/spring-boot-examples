@@ -17,6 +17,9 @@ pipeline {
 
     stage('mvn build') {
       steps {
+        script{
+        	env.stepLevel = 'mvn build'
+	}
         sh '''cd spring-boot-package-war 
 			echo $BUILD_ID
 			mvn compile'''
@@ -25,6 +28,9 @@ pipeline {
 
     stage('test the app') {
       steps {
+       script{
+        	env.stepLevel = 'test the app'
+	}	      
         sh '''cd spring-boot-package-war 
 			mvn test'''
       }
@@ -32,6 +38,9 @@ pipeline {
 
     stage('packging') {
       steps {
+        script{
+		env.stepLevel = 'packging'
+	}
         sh '''cd spring-boot-package-war 
 			mvn clean package & '''
         zip(zipFile: 'package.zip', archive: true, overwrite: true)
@@ -46,7 +55,7 @@ pipeline {
   }
   post {
     success {
-      slackSend(channel: 'david-varshoer', message: 'pipleline ended artifact is ready !', color: '#008000')
+      slackSend(channel: 'david-varshoer', message: 'pipleline build #${env.BUILD_NUMBER} ended artifact is ready !', color: '#008000')
     }
 
     failure {
