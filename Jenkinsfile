@@ -55,7 +55,7 @@ pipeline {
 
   }
   environment {
-    
+    foo ='nothing'
   }
   post {
     success {
