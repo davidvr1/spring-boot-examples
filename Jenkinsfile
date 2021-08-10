@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
+        stepLevel = 'Checkout Code'
         git(url: 'https://github.com/davidvr1/spring-boot-examples.git1', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
@@ -47,7 +48,7 @@ pipeline {
     }
 
     failure {
-      slackSend(channel: 'david-varshoer', message: " ${stepLevel} FAILED for ${env.JOB_NAME} #${env.BUILD_NUMBER} ", color: '#ff0000', failOnError: false)
+      slackSend(channel: 'david-varshoer', message: " ${stepLevel} FAILED for build #${env.BUILD_NUMBER} ", color: '#ff0000', failOnError: false)
     }
 
   }
