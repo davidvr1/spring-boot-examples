@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-        git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
+        git(url: 'https://github.com/davidvr1/spring-boot-examples.git1', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
       }
     }
 
