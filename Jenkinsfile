@@ -22,7 +22,7 @@ pipeline {
           env.stepLevel = 'mvn build'
         }
 
-        sh '''cd spring-boot-package-war1 
+        sh '''cd spring-boot-package-war 
 			echo $BUILD_ID
 			mvn compile'''
       }
