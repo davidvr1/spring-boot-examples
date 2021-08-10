@@ -37,7 +37,7 @@ mvn clean package & '''
         zip(zipFile: 'package.zip', archive: true, overwrite: true)
         archiveArtifacts(artifacts: 'package.zip', onlyIfSuccessful: true)
         cleanWs(cleanWhenSuccess: true)
-        slackSend(channel: 'david-varshoer', message: 'pipleline ended artifact is ready !', attachments: 'package.zip', color: '#008000')
+        slackSend(channel: 'david-varshoer', message: 'pipleline ended artifact is ready !', color: '#008000')
       }
     }
 
