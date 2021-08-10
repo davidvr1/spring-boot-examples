@@ -1,7 +1,4 @@
 pipeline {
-	 environment {
-    stepLevel = 'start'
-  }
   agent {
     node {
       label 'centos7'
@@ -57,7 +54,9 @@ pipeline {
     }
 
   }
- 
+  environment {
+    stepLevel = 'start'
+  }
   post {
     success {
       slackSend(channel: 'david-varshoer', message: 'pipleline build #${env.BUILD_NUMBER} ended artifact is ready !', color: '#008000')
