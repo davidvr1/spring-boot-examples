@@ -45,9 +45,9 @@ pipeline {
 			slackSend(channel: 'david-varshoer', message: 'pipleline ended artifact is ready !', color: '#008000')
 		  }
 		}
-	} catch(e){
-			slackSend(channel: 'david-varshoer', message: "FAILED: job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}), color: ''#ff0000'')
-			sh 'exit 1'
+	} catch(e) {
+		slackSend(channel: 'david-varshoer', message: "FAILED: job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}), color: ''#ff0000'')
+		throw 0;
 	}
   }
 }
