@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout Code') {
       steps {
         git(url: 'https://github.com/davidvr1/spring-boot-examples.git', branch: 'davidvr1_sol', changelog: true, poll: true, credentialsId: 'github')
-        slackSend(channel: 'david-varshoer', message: '${env.JOB_NAME} #${env.BUILD_NUMBER} started GIT checkout (${env.BUILD_URL}) failed!', failOnError: true, color: '#ff0000')
+        slackSend(channel: 'david-varshoer', message: '${JOB_NAME} #${env.BUILD_NUMBER} started GIT checkout (${env.BUILD_URL}) failed!', failOnError: true, color: '#ff0000')
       }
     }
 
