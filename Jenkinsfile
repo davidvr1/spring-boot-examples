@@ -59,7 +59,7 @@ pipeline {
   }
   post {
     success {
-      slackSend(channel: 'david-varshoer', message: "pipleline build #${env.BUILD_NUMBER} ended artifact is ready !", color: '#008000')
+      slackSend(channel: 'david-varshoer', message: "pipleline build #${env.BUILD_NUMBER} ended artifact is ready (${env.$BUILD_URL})", color: '#008000')
     }
 
     failure {
