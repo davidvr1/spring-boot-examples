@@ -23,8 +23,8 @@ pipeline {
         }
 
         sh '''cd spring-boot-package-war 
-			echo $BUILD_ID
-			mvn compile'''
+echo $BUILD_ID
+mvn compile'''
       }
     }
 
@@ -35,7 +35,7 @@ pipeline {
         }
 
         sh '''cd spring-boot-package-war 
-			mvn test'''
+mvn test'''
       }
     }
 
@@ -45,8 +45,7 @@ pipeline {
           env.stepLevel = 'packging'
         }
 
-        sh '''cd spring-boot-package-war 
-			mvn clean package & '''
+        sh 'cd spring-boot-package-war mvn clean package & '
         zip(zipFile: 'package.zip', archive: true, overwrite: true)
         archiveArtifacts(artifacts: 'package.zip', onlyIfSuccessful: true)
         cleanWs(cleanWhenSuccess: true)
