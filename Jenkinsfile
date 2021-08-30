@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Checkout Code') {
       steps {
-         script {
+        script {
           env.stepLevel = 'Checkout Code'
         }
 
@@ -56,8 +56,7 @@ mvn test'''
   environment {
     foo = 'nothing'
   }
-
-   post {
+  post {
     success {
       slackSend(channel: 'david-varshoer', message: "pipleline build #${env.BUILD_NUMBER} ended artifact is ready (${env.BUILD_URL})", color: '#008000')
     }
